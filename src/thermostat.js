@@ -38,13 +38,21 @@ Thermostat.prototype.isPowerSavingModeOn = function() {
   return this.powerSavingMode === true;
 };
 
-Thermostat.prototype.switchPowerSavingModeOff = function() {
-  this.powerSavingMode = false;
+Thermostat.prototype.togglePowerSavingMode = function() {
+  if(this.isPowerSavingModeOn() === true) {
+    this.powerSavingMode = false;
+  } else {
+    this.powerSavingMode = true;
+  }
 };
 
-Thermostat.prototype.switchPowerSavingModeOn = function() {
-  this.powerSavingMode = true;
-};
+// Thermostat.prototype.switchPowerSavingModeOff = function() {
+//   this.powerSavingMode = false;
+// };
+
+// Thermostat.prototype.switchPowerSavingModeOn = function() {
+//   this.powerSavingMode = true;
+// };
 
 Thermostat.prototype.isMaximumTemperature = function() {
   if (this.isPowerSavingModeOn() === false) {

@@ -18,17 +18,13 @@ $(document).ready(function() {
     updateTemperature();
   });
 
-  $('#powersaving-on').click(function() {
-    thermostat.switchPowerSavingModeOn();
-    $('#power-saving-status').text('on');
+  $('#powersaving-toggle').click(function() {
+    thermostat.togglePowerSavingMode();
+    var status = $('#power-saving-status').text();
+    $('#power-saving-status').text(
+      status == 'on' ? 'off' : 'on'
+    );
   });
-
-  $('#powersaving-off').click(function() {
-    thermostat.switchPowerSavingModeOff();
-    $('#power-saving-status').text('off');
-  });
-
-
 
   // call to the weatherAPI
   displayWeather('London');
@@ -37,14 +33,6 @@ $(document).ready(function() {
     var city = $('#current-city').val();
     displayWeather(city);
   });
-  // $('#current-city').change(function() {
-  //   // displayWeather('Paris');
-  // })
-
-
-
-
-
 
 
   function updateTemperature() {

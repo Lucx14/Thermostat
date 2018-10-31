@@ -34,14 +34,13 @@ describe('Thermostat', function() {
   });
 
   it('can switch PSM off', function() {
-    thermostat.switchPowerSavingModeOff();
+    thermostat.togglePowerSavingMode();
     expect(thermostat.isPowerSavingModeOn()).toBe(false);
   });
 
   it('can switch PSM back on', function() {
-    thermostat.switchPowerSavingModeOff();
-    expect(thermostat.isPowerSavingModeOn()).toBe(false);
-    thermostat.switchPowerSavingModeOn();
+    thermostat.togglePowerSavingMode();
+    thermostat.togglePowerSavingMode();
     expect(thermostat.isPowerSavingModeOn()).toBe(true);
   });
 
@@ -57,7 +56,7 @@ describe('Thermostat', function() {
 
   describe('when power saving mode is off', function() {
     it('has a maximum temperature of 32 degrees', function() {
-      thermostat.switchPowerSavingModeOff();
+      thermostat.togglePowerSavingMode();
       for (var i = 0; i < 13; i++) {
         thermostat.up();
       };
